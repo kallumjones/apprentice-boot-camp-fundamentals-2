@@ -24,9 +24,11 @@ function addFizz() {
 function fizzBuzzValue(number) {
   fizzCounter++;
   buzzCounter--;
-  let string = fizzCounter == 3 || buzzCounter == 0 ? "" : number + 1;
-  if (fizzCounter == 3) string += addFizz();
-  if (buzzCounter == 0) string += addBuzz();
+  const shouldAddFizz = fizzCounter == 3;
+  const shouldAddBuzz = buzzCounter == 0;
+  let string = shouldAddFizz || shouldAddBuzz ? "" : number + 1;
+  if (shouldAddFizz) string += addFizz();
+  if (shouldAddBuzz) string += addBuzz();
   return string;
 }
 
