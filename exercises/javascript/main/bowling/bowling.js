@@ -16,7 +16,7 @@ export const bowl = (rolls) => {
   
     for (let i = 0; i < frames.length; i++) {
       const currentFrame = frames[i];
-      console.log(currentFrame);
+    //   console.log(currentFrame);
   
       let scoreForFrame;
   
@@ -30,7 +30,7 @@ export const bowl = (rolls) => {
         const nextFrame = frames[i + 1];
         scoreForFrame += nextFrame[0] + nextFrame[1];
   
-        console.log(scoreForFrame);
+        // console.log(scoreForFrame);
       } else {
         scoreForFrame = currentFrame[0] + currentFrame[1];
         const isSpare = scoreForFrame === 10;
@@ -41,7 +41,7 @@ export const bowl = (rolls) => {
         }
       }
   
-      console.log(frames);
+    //   console.log(frames);
   
       total += scoreForFrame;
     }
