@@ -31,8 +31,8 @@ function addFizz() {
 function fizzBuzzValue(index) {
   fizzCounter++;
   buzzCounter--;
-  const shouldAddFizz = fizzCounter == MULTIPLE_FOR_FIZZ;
-  const shouldAddBuzz = buzzCounter == 0;
+  const shouldAddFizz = isMultipleOfThree();
+  const shouldAddBuzz = isMultipleOfFive();
   const currentNumber = index + 1;
   let string = shouldAddFizz || shouldAddBuzz ? "" : currentNumber;
   if (shouldAddFizz) string += addFizz();
@@ -41,3 +41,11 @@ function fizzBuzzValue(index) {
 }
 
 module.exports.fizzBuzzSequence = fizzBuzzSequence;
+
+function isMultipleOfFive() {
+  return buzzCounter == 0;
+}
+
+function isMultipleOfThree() {
+  return fizzCounter == MULTIPLE_FOR_FIZZ;
+}

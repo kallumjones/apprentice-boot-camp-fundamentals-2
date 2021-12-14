@@ -10,36 +10,48 @@ class Receipt {
     return this.text + "Total: " + this.total;
   }
 
-  scannedA() {
-    this.text += 'A: 50';
-    if (++this.numberOfA % 3 == 0) {
-      this.text += ' - 20 (3 for 130)';
-      this.total += 30;
+  createReceiptTextLine(product, price) {
+    return `${product}: ${price}`;
+  } 
+  
+  createOfferReceiptTextLine(reductionPrice, offerNumber, offerPrice) {
+    return ` - ${reductionPrice} (${offerNumber} for ${offerPrice})`;
+  }
+
+
+  addNonOfferText(product, productPrice) {
+    this.text += this.createReceiptTextLine(product, productPrice);;
+    this.text += '\n';
+    this.total += Number(productPrice);
+  }
+
+  addOfferText(product, productPrice, productCount,  reductionPrice, offerNumber, offerPrice) {
+    this.text += this.createReceiptTextLine(product, productPrice);
+    if (++this[productCount] % offerNumber == 0) {
+      this.text += this.createOfferReceiptTextLine(reductionPrice, offerNumber, offerPrice);
+      this.total += Number(productPrice);
+      this.total -= Number(reductionPrice);
     } else {
-      this.total += 50;
+      this.total += Number(productPrice);
     }
     this.text += '\n';
+  }
+
+  scannedA() {
+    this.addOfferText('A','50', 'numberOfA','30', '5', '220');
   };
 
   scannedB() {
-    this.text += 'B: 30';
-    if (++this.numberOfB % 2 == 0) {
-      this.text += ' - 15 (2 for 45)';
-      this.total += 15;
-    } else {
-      this.total += 30;
-    }
-    this.text += '\n';
+
+    this.addOfferText('B', '30', 'numberOfB', '15', '2', '45');
   };
 
   scannedC() {
-    this.text += 'C: 20\n';
-    this.total += 20;
+    this.addNonOfferText('C', '20');
   };
 
   scannedD() {
-    this.text += 'D: 15\n';
-    this.total += 15;
+    this.addNonOfferText('D', '15');
   };
 };
 

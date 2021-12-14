@@ -11,8 +11,8 @@ class Checkout {
   scan(sku) {
     if ('A' === sku) {
       this.total += 50;
-      if (++this.numberOfA % 3 === 0) {
-        this.total -= 20;
+      if (++this.numberOfA % 5 === 0) {
+        this.total -= 30;
       }
       this.receipt.scannedA();
     } else if ('B' === sku) {

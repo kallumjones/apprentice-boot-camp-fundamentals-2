@@ -19,7 +19,7 @@ describe('Checkout', function () {
     checkout.scan('A');
     checkout.scan('A');
     checkout.scan('A');
-    expect(checkout.getTotal()).toBe(130);
+    expect(checkout.getTotal()).toBe(150);
   });
 
   test('scans six As', function () {
@@ -30,7 +30,7 @@ describe('Checkout', function () {
     checkout.scan('A');
     checkout.scan('A');
     checkout.scan('A');
-    expect(checkout.getTotal()).toBe(260);
+    expect(checkout.getTotal()).toBe(270);
   });
 
   test('scans one B', function () {
@@ -54,6 +54,16 @@ describe('Checkout', function () {
     checkout.scan('B');
     checkout.scan('B');
     expect(checkout.getTotal()).toBe(90);
+  });
+
+
+  test('scans four Cs', function () {
+    let checkout = new Checkout();
+    checkout.scan('C');
+    checkout.scan('C');
+    checkout.scan('C');
+    checkout.scan('C');
+    expect(checkout.getTotal()).toBe(80);
   });
 
   test('simple, scans A, B, C, and D', function () {
@@ -83,30 +93,30 @@ describe('Checkout', function () {
     expect(checkout.getTotal()).toBe(130);
 
     checkout.scan('A');
-    expect(checkout.getTotal()).toBe(160);
+    expect(checkout.getTotal()).toBe(180);
 
     checkout.scan('B');
-    expect(checkout.getTotal()).toBe(175);
-
-    checkout.scan('C');
     expect(checkout.getTotal()).toBe(195);
 
-    checkout.scan('B');
-    expect(checkout.getTotal()).toBe(225);
-
     checkout.scan('C');
+    expect(checkout.getTotal()).toBe(215);
+
+    checkout.scan('B');
     expect(checkout.getTotal()).toBe(245);
 
-    checkout.scan('D');
-    expect(checkout.getTotal()).toBe(260);
+    checkout.scan('C');
+    expect(checkout.getTotal()).toBe(265);
 
     checkout.scan('D');
-    expect(checkout.getTotal()).toBe(275);
+    expect(checkout.getTotal()).toBe(280);
 
     checkout.scan('D');
-    expect(checkout.getTotal()).toBe(290);
+    expect(checkout.getTotal()).toBe(295);
+
+    checkout.scan('D');
+    expect(checkout.getTotal()).toBe(310);
 
     checkout.scan('C');
-    expect(checkout.getTotal()).toBe(310);
+    expect(checkout.getTotal()).toBe(330);
   });
 });
