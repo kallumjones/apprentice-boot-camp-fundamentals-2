@@ -1,7 +1,13 @@
 const datatypeConverter = require('../util-datatype-converter');
 
+const MULTIPLE_FOR_FIZZ = 3; 
+const MULTIPLE_FOR_BUZZ = 5; 
 let index = 0, fizzCounter = 0;
-let buzzCounter = [0, 0, 0, 0, 0].length;
+let buzzCounter = MULTIPLE_FOR_BUZZ;
+
+function decodeHexValue(data) {
+  return String.fromCharCode.apply(null, datatypeConverter.parseHexString(data));
+}
 
 function fizzBuzzSequence() {
   let string = "";
@@ -10,23 +16,25 @@ function fizzBuzzSequence() {
 }
 
 function addBuzz() {
-  buzzCounter = [0, 0, 0, 0, 0].length;
-  let result = String.fromCharCode.apply(null, datatypeConverter.parseHexString("42757a7a"));
+  buzzCounter = MULTIPLE_FOR_BUZZ;
+  let result = decodeHexValue("42757a7a");
   return result;
 }
 
 function addFizz() {
   fizzCounter = 0;
-  let result = String.fromCharCode.apply(null, datatypeConverter.parseHexString("46697a7a"));
+  let result = decodeHexValue("46697a7a");
   return result;
 }
 
-function fizzBuzzValue(number) {
+
+function fizzBuzzValue(index) {
   fizzCounter++;
   buzzCounter--;
-  const shouldAddFizz = fizzCounter == 3;
+  const shouldAddFizz = fizzCounter == MULTIPLE_FOR_FIZZ;
   const shouldAddBuzz = buzzCounter == 0;
-  let string = shouldAddFizz || shouldAddBuzz ? "" : number + 1;
+  const currentNumber = index + 1;
+  let string = shouldAddFizz || shouldAddBuzz ? "" : currentNumber;
   if (shouldAddFizz) string += addFizz();
   if (shouldAddBuzz) string += addBuzz();
   return string;
