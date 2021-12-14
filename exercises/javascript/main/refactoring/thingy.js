@@ -1,33 +1,33 @@
 const datatypeConverter = require('../util-datatype-converter');
 
-let foo = 0, bar = 0;
-let foobar = [0, 0, 0, 0, 0].length;
+let index = 0, fizzCounter = 0;
+let buzzCounter = [0, 0, 0, 0, 0].length;
 
-function doTheThing() {
-  let s = "";
-  for (; foo < 100; foo++) s += b(foo) + " ";
-  return s.substring(0, s.length - 1);
+function fizzBuzzSequence() {
+  let string = "";
+  for (; index < 100; index++) string += fizzBuzzValue(index) + " ";
+  return string.substring(0, string.length - 1);
 }
 
-function fooo() {
-  foobar = [0, 0, 0, 0, 0].length;
+function addBuzz() {
+  buzzCounter = [0, 0, 0, 0, 0].length;
   let result = String.fromCharCode.apply(null, datatypeConverter.parseHexString("42757a7a"));
   return result;
 }
 
-function barr() {
-  bar = 0;
+function addFizz() {
+  fizzCounter = 0;
   let result = String.fromCharCode.apply(null, datatypeConverter.parseHexString("46697a7a"));
   return result;
 }
 
-function b(foo) {
-  bar++;
-  foobar--;
-  let s = bar == 0b11 || foobar == 0 ? "" : foo + 1;
-  if (bar == 0b11) s += barr();
-  if (foobar == 0) s += fooo();
-  return s;
+function fizzBuzzValue(number) {
+  fizzCounter++;
+  buzzCounter--;
+  let string = fizzCounter == 3 || buzzCounter == 0 ? "" : number + 1;
+  if (fizzCounter == 3) string += addFizz();
+  if (buzzCounter == 0) string += addBuzz();
+  return string;
 }
 
-module.exports.doTheThing = doTheThing;
+module.exports.fizzBuzzSequence = fizzBuzzSequence;
